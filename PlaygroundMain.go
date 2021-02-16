@@ -19,13 +19,15 @@ func main() {
 
 	all, err = sumAll([]int{})
 	if err != nil {
-		log.Println(err)
+		log.Print(err)
 	}
 	fmt.Println(all)
 
 	dto := new(Dto)
 	dto.Id = 4
 	dto.Name = "super"
+
+	dto.GetName()
 
 	bolB, _ := json.Marshal(dto)
 	fmt.Println(string(bolB))
@@ -54,4 +56,8 @@ func sum(a int, b int) int {
 type Dto struct {
 	Id   int    `json:"id"`
 	Name string `json:"name"`
+}
+
+func (dto Dto) GetName() string {
+	return dto.Name
 }
